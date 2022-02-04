@@ -45,15 +45,13 @@
           $json_data_decode[] = $add_data;
           $json_data_encode = json_encode($json_data_decode);
           if(file_put_contents($url, $json_data_encode)){
-            return true;
+            return new Response(true, "Utente registrato con successo", 202, "json");
           }
         }else{
-          echo "Utente giá registrato";
-          return false;
+          return new Response(false, "Utente gia registrato", 400, "json");
         }
       }else{
-        echo "File non esistente";
-        return false;
+        return new Response(false, "File non esistente", 500, "json");
       }
     }
 
@@ -70,13 +68,11 @@
                 array(
                     'Nome' => getConsonants($name),
                     'Cognome' => getConsonants($surname),
-                    // 'Domain' => getDomain($email)
-                    // 'Domain' => $email_domain[1]
                     'Domain' => substr($email, strpos($email, "@")+1)
                 )
             );
-            register("./src/user.json", $name, $surname, $email, $password);
-            var_dump(json_decode($json, true, 4));
+            $test = register("./src/user.json", $name, $surname, $email, $password);
+            echo json_encode($test);
           }
         }else{
           $test = new Response(true, "asd", 202, "json");

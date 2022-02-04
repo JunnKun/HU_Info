@@ -5,11 +5,12 @@
         private $status_code;
         private $content_type;
 
+        // CONSTRUCTOR
         function __construct($error, $message, $status_code, $content_type) {
             $this -> error = $error;
-            $this -> error = $message;
-            $this -> error = $status_code;
-            $this -> error = $content_type;
+            $this -> message = $message;
+            $this -> status_code = $status_code;
+            $this -> content_type = $content_type;
         }
 
         // SET
