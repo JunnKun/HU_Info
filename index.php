@@ -1,5 +1,6 @@
 <?php
-  require './response.php';
+  include './response.php';
+  include './db_connection.php';
 
   if(isset($_REQUEST["submit"])){
     $consonants = array('B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z');
